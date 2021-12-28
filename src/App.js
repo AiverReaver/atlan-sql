@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useCallback, useState } from "react";
+import "./App.css";
+import { SQLEditor } from "./components/SQLEditor";
+import { TableView } from "./components/TableView";
+import "./mocks";
+import { executeQuery } from "./mocks";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  const onQueryExecute = useCallback((query) => {
+    const res = executeQuery(query);
+
+    setData(res);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2 style={{ textAlign: "center", color: "#0b80da" }}>SQL Editor</h2>
+      <SQLEditor onQueryExecute={onQueryExecute} />
+      <div style={{ marginTop: "20px" }}>
+        <h3 style={{ color: "#f6653c" }}>Results</h3>
+        <TableView
+          headers={Object.keys(data[0] || {})}
+          keys={Object.keys(data[0] || {})}
+          data={data}
+          rowKey="employeeID"
+        />
+      </div>
     </div>
   );
 }
