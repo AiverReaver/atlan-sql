@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Page load time is 0.4s calculated with chrome lighthouse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# I was able to decrease page load time from 0.5s to 0.4s by lazy loading component and function
+
+# Getting Started with Create React App
 
 ## Available Scripts
 
