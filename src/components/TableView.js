@@ -1,8 +1,6 @@
 import React from "react";
 
-export const TableView = ({ headers = [], keys = [], data = [], rowKey }) => {
-  console.log(data);
-
+const TableView = ({ headers = [], keys = [], data = [] }) => {
   return (
     <table
       style={{
@@ -17,10 +15,10 @@ export const TableView = ({ headers = [], keys = [], data = [], rowKey }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((row) => (
-          <tr key={row[rowKey]}>
-            {keys.map((key, index) => (
-              <td key={row[rowKey] + `${index}`}>{row[key]}</td>
+        {data.map((row, index) => (
+          <tr key={index}>
+            {keys.map((key, intIndex) => (
+              <td key={index + intIndex}>{row[key]}</td>
             ))}
           </tr>
         ))}
@@ -28,3 +26,5 @@ export const TableView = ({ headers = [], keys = [], data = [], rowKey }) => {
     </table>
   );
 };
+
+export default TableView;

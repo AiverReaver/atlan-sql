@@ -45,3 +45,8 @@ td {
 tr:nth-child(even) td {
   background: #ffe7e1;
 }
+
+.header {
+  text-align: center;
+  color: #0b80da;
+}
